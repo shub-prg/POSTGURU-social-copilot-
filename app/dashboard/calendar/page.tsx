@@ -35,6 +35,7 @@ export default async function CalendarPage() {
   // Convert dates to strings for the client component
   const serializablePosts = allPosts.map(post => ({
     ...post,
+    mediaUrls: (post.mediaUrls as any) || [],
     scheduledAt: post.scheduledAt ? post.scheduledAt.toISOString() : null,
     createdAt: post.createdAt.toISOString(),
     updatedAt: post.updatedAt.toISOString(),

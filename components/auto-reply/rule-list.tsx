@@ -111,10 +111,10 @@ export function RuleList({ rules, onEdit, onDelete, onToggle, onReorder }: RuleL
               <TableCell>
                 <div className="flex gap-1.5">
                   {rule.platforms.includes("FACEBOOK") && (
-                    <Facebook className="w-4 h-4 text-blue-600" title="Facebook" />
+                    <Facebook className="w-4 h-4 text-blue-600" />
                   )}
                   {rule.platforms.includes("INSTAGRAM") && (
-                    <Instagram className="w-4 h-4 text-pink-600" title="Instagram" />
+                    <Instagram className="w-4 h-4 text-pink-600" />
                   )}
                 </div>
               </TableCell>

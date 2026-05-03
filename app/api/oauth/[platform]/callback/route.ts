@@ -10,8 +10,6 @@ import { cookies } from 'next/headers';
 // Import platform helpers
 import { exchangeTwitterCode, getTwitterProfile } from '@/lib/platforms/twitter';
 import { exchangeFacebookCode, getFacebookPages } from '@/lib/platforms/facebook';
-import { exchangeLinkedinCode, getLinkedinProfile } from '@/lib/platforms/linkedin';
-import { exchangeInstagramCode, getInstagramProfile } from '@/lib/platforms/instagram';
 
 export async function GET(
   req: NextRequest,

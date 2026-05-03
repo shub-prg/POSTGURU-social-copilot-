@@ -38,12 +38,12 @@ import { toast } from "sonner";
 const ruleSchema = z.object({
   name: z.string().min(2, "Name is required"),
   triggerType: z.enum(["ANY_COMMENT", "KEYWORD_MATCH", "POSITIVE_SENTIMENT", "NEGATIVE_SENTIMENT"]),
-  keywords: z.array(z.string()).default([]),
+  keywords: z.array(z.string()),
   platforms: z.array(z.string()).min(1, "Select at least one platform"),
   replyMode: z.enum(["TEMPLATE", "AI_GENERATED"]),
   replyTemplate: z.string().optional(),
   aiPrompt: z.string().optional(),
-  isActive: z.boolean().default(true),
+  isActive: z.boolean(),
 });
 
 type RuleFormValues = z.infer<typeof ruleSchema>;

@@ -252,7 +252,7 @@ export default function SettingsPage() {
                 <p className="text-xs text-muted-foreground mb-3">The tone used for AI-generated comments and replies.</p>
                 <Select 
                   value={settings.aiReplyTone} 
-                  onValueChange={(val) => setSettings({...settings, aiReplyTone: val})}
+                  onValueChange={(val) => setSettings({...settings, aiReplyTone: val || "Friendly"})}
                 >
                   <SelectTrigger className="w-full md:w-[300px] bg-muted/50 border-none h-11">
                     <SelectValue placeholder="Select a tone" />
@@ -329,7 +329,7 @@ export default function SettingsPage() {
                   <Globe className="w-4 h-4 text-muted-foreground" />
                   <Select 
                     value={settings.timezone} 
-                    onValueChange={(val) => setSettings({...settings, timezone: val})}
+                    onValueChange={(val) => setSettings({...settings, timezone: val || "UTC"})}
                   >
                     <SelectTrigger className="w-full md:w-[300px] bg-muted/50 border-none h-11">
                       <SelectValue placeholder="Select timezone" />

@@ -3,15 +3,12 @@ import crypto from 'crypto';
 const ALGORITHM = 'aes-256-gcm';
 const IV_LENGTH = 12;
 
-const ENCRYPTION_KEY = process.env.ENCRYPTION_KEY;
+const ENCRYPTION_KEY = process.env.ENCRYPTION_KEY || (process.env.NODE_ENV === 'production' ? '' : '0000000000000000000000000000000000000000000000000000000000000000');
 
-if (!ENCRYPTION_KEY) {
-  // During build or if missing, we throw an error in production but 
-  // maybe we should be more graceful in dev. 
-  // However, tokens MUST be encrypted.
-  if (process.env.NODE_ENV === 'production') {
-    throw new Error('ENCRYPTION_KEY must be set in production');
-  }
+if (!ENCRYPTION_KEY && process.env.NODE_ENV === 'production') {
+  // During static page generation (build time), we might not have all env vars.
+  // We only want to throw if we're actually trying to encrypt something in a real production environment.
+  console.warn('⚠️ ENCRYPTION_KEY is missing. Build will continue but encryption will fail at runtime if not provided.');
 }
 
 /**

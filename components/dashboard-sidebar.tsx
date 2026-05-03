@@ -7,9 +7,9 @@ import {
   PenSquare, 
   Calendar, 
   MessageSquare, 
-  BarChart3, 
-  Settings, 
-  CreditCard 
+  Settings,
+  Images,
+  BarChart3
 } from "lucide-react";
 import Link from "next/link";
 import { Logo } from "@/components/logo";
@@ -32,17 +32,17 @@ import {
 const navItems = [
   { label: "Main", items: [
     { label: "Dashboard", icon: LayoutDashboard, href: "/dashboard" },
+    { label: "Analytics", icon: BarChart3, href: "/dashboard/analytics" },
     { label: "Connected Accounts", icon: Link2, href: "/dashboard/accounts" },
-    { label: "Create Post", icon: PenSquare, href: "/dashboard/create" },
+    { label: "Media Library", icon: Images, href: "/dashboard/media" },
+    { label: "Create Post", icon: PenSquare, href: "/dashboard/compose" },
     { label: "Calendar", icon: Calendar, href: "/dashboard/calendar" },
   ]},
   { label: "Automation", items: [
     { label: "Auto-Reply Rules", icon: MessageSquare, href: "/dashboard/auto-reply" },
-    { label: "Analytics", icon: BarChart3, href: "/dashboard/analytics" },
   ]},
   { label: "Account", items: [
     { label: "Settings", icon: Settings, href: "/dashboard/settings" },
-    { label: "Billing", icon: CreditCard, href: "/dashboard/billing" },
   ]}
 ];
 
@@ -53,7 +53,7 @@ export function DashboardSidebar() {
   return (
     <Sidebar>
       <SidebarHeader className="border-b border-border py-4">
-        <Link href="/dashboard" className="flex items-center justify-center">
+        <Link href="/" className="flex items-center justify-center">
           <Logo className="w-36 h-9 object-contain" />
         </Link>
       </SidebarHeader>
@@ -61,7 +61,7 @@ export function DashboardSidebar() {
       <SidebarContent>
         {navItems.map((section, idx) => (
           <SidebarGroup key={idx}>
-            <SidebarGroupLabel className="text-xs text-muted font-bold tracking-widest uppercase px-3">
+            <SidebarGroupLabel className="text-xs text-muted-foreground font-bold tracking-widest uppercase px-3">
               {section.label}
             </SidebarGroupLabel>
             <SidebarGroupContent>
@@ -77,7 +77,7 @@ export function DashboardSidebar() {
                             className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-all ${
                               active 
                                 ? "bg-primary text-white font-semibold shadow-lg shadow-primary/25" 
-                                : "text-muted hover:bg-primary/10 hover:text-foreground"
+                                : "text-muted-foreground hover:bg-primary/10 hover:text-foreground"
                             }`}
                           />
                         } 

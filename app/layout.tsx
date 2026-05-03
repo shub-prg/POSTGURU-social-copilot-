@@ -9,6 +9,7 @@ const russoOne = Russo_One({
 });
 
 import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "sonner";
 
 export default function RootLayout({
   children,
@@ -18,7 +19,10 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
-        <body className={`${russoOne.variable} font-sans min-h-full flex flex-col antialiased bg-background text-foreground transition-colors duration-300 text-base`}>
+        <body 
+          className={`${russoOne.variable} font-sans min-h-full flex flex-col antialiased bg-background text-foreground transition-colors duration-300 text-base`}
+          suppressHydrationWarning
+        >
           <ThemeProvider
             attribute="class"
             defaultTheme="light"
@@ -26,6 +30,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             {children}
+            <Toaster richColors position="top-right" />
           </ThemeProvider>
         </body>
       </html>
